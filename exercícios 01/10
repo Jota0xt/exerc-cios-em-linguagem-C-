@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+int main(void) {
+    int numero;
+    int tentativas = 0;
+    int valido = 0;
+
+    while (!valido) {
+        printf("Digite um número entre 1 e 100: ");
+        tentativas++;
+
+        if (scanf("%d", &numero) != 1) {
+            printf("Erro: entrada inválida. Digite apenas números inteiros.\n");
+            while (getchar() != '\n');  /* limpa o buffer */
+            continue;
+        }
+
+        if (numero < 1 || numero > 100) {
+            printf("Erro: %d está fora da faixa permitida (1 a 100).\n", numero);
+        } else {
+            valido = 1;
+        }
+    }
+
+    printf("Número válido: %d\n", numero);
+    printf("Tentativas necessárias: %d\n", tentativas);
+
+    return 0;
+}
